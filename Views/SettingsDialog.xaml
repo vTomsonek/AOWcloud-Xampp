@@ -1,0 +1,71 @@
+<Window x:Class="XamppVHostManager.Views.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ustawienia" Height="640" Width="660"
+        Icon="/icon.ico"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BgBrush}"
+        ResizeMode="CanResize" ShowInTaskbar="False">
+    <DockPanel Margin="20">
+
+        <!-- Przyciski na dole -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button Content="Anuluj" Click="Cancel_Click" Width="100"/>
+            <Button Content="Zapisz" Click="Ok_Click" Style="{StaticResource AccentButton}" Width="100"/>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Text="Ścieżki względne liczone są od litery dysku przenośnego. Puste pole = wartość domyślna."
+                           Foreground="{StaticResource SubTextBrush}" TextWrapping="Wrap" Margin="0,0,0,16"/>
+
+                <!-- vhosts.conf -->
+                <StackPanel Margin="0,0,0,12">
+                    <TextBlock Text="httpd-vhosts.conf (względna od dysku)" Foreground="{StaticResource SubTextBrush}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="VHostsBox"/>
+                    <TextBlock x:Name="VHostsPreview" FontSize="11" Foreground="{StaticResource SubTextBrush}" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- httpd.exe -->
+                <StackPanel Margin="0,0,0,12">
+                    <TextBlock Text="httpd.exe (względna od dysku)" Foreground="{StaticResource SubTextBrush}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="HttpdBox"/>
+                    <TextBlock x:Name="HttpdPreview" FontSize="11" Foreground="{StaticResource SubTextBrush}" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- hosts -->
+                <StackPanel Margin="0,0,0,12">
+                    <TextBlock Text="Plik hosts (LOKALNY na komputerze; puste = systemowy domyślny)" Foreground="{StaticResource SubTextBrush}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="HostsBox"/>
+                </StackPanel>
+
+                <CheckBox x:Name="AskRestartBox" Content="Pytaj przed restartem Apache" Margin="0,4,0,12"/>
+
+                <!-- HTTPS (443) -->
+                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="0,12,0,0" Margin="0,0,0,12">
+                    <StackPanel>
+                        <CheckBox x:Name="HttpsBox" Content="Generuj też vhosty HTTPS (443) — zalecane dla domen .ai" Margin="0,0,0,8"/>
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                                <TextBlock Text="Certyfikat SSL (od ServerRoot Apache; puste = XAMPP)" Foreground="{StaticResource SubTextBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                <TextBox x:Name="SslCertBox"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="6,0,0,0">
+                                <TextBlock Text="Klucz SSL (od ServerRoot Apache; puste = XAMPP)" Foreground="{StaticResource SubTextBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                <TextBox x:Name="SslKeyBox"/>
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock FontSize="11" Foreground="{StaticResource SubTextBrush}" TextWrapping="Wrap"
+                                   Text="Certyfikat XAMPP jest self-signed — przeglądarka pokaże jednorazowe ostrzeżenie, które można zaakceptować."/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

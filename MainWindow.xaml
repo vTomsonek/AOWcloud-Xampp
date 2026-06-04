@@ -1,0 +1,81 @@
+<Window x:Class="XamppVHostManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AOWcloud Xampp (przenośny)" Height="640" Width="980"
+        Icon="/icon.ico"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgBrush}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Baner -->
+            <RowDefinition Height="Auto"/>  <!-- Ostrzeżenia -->
+            <RowDefinition Height="Auto"/>  <!-- Pasek przycisków listy -->
+            <RowDefinition Height="*"/>     <!-- DataGrid -->
+            <RowDefinition Height="Auto"/>  <!-- Pasek globalny -->
+            <RowDefinition Height="Auto"/>  <!-- Status -->
+        </Grid.RowDefinitions>
+
+        <!-- ===== Baner: dysk / host / status sync ===== -->
+        <Border Grid.Row="0" Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding BannerText}" FontSize="15" FontWeight="SemiBold"/>
+                    <TextBlock Margin="0,2,0,0" FontSize="11" Foreground="{StaticResource SubTextBrush}">
+                        <Run Text="Dane na dysku przenośnym — config.json jest jedynym źródłem prawdy o liście vhostów."/>
+                    </TextBlock>
+                </StackPanel>
+                <Button Grid.Column="1" x:Name="RestartBtnBanner" Content="Restart Apache"
+                        Style="{StaticResource AccentButton}" Click="Restart_Click"
+                        VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- ===== Ostrzeżenia ===== -->
+        <Border Grid.Row="1" Margin="0,10,0,0" Background="#33E5484D" CornerRadius="6"
+                BorderBrush="{StaticResource DangerBrush}" BorderThickness="1" Padding="12,8"
+                Visibility="{Binding HasWarnings, Converter={StaticResource BoolToVis}}">
+            <TextBlock Text="{Binding WarningsText}" TextWrapping="Wrap" Foreground="{StaticResource TextBrush}"/>
+        </Border>
+
+        <!-- ===== Przyciski listy ===== -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,14,0,8">
+            <Button Content="➕ Dodaj" Click="Add_Click"/>
+            <Button Content="✏️ Edytuj" Click="Edit_Click"/>
+            <Button Content="🗑 Usuń" Click="Delete_Click" Style="{StaticResource DangerButton}"/>
+            <Button Content="🌐 Otwórz w przeglądarce" Click="OpenBrowser_Click"/>
+        </StackPanel>
+
+        <!-- ===== DataGrid projektów ===== -->
+        <DataGrid Grid.Row="3" x:Name="ProjectsGrid" ItemsSource="{Binding Projects}"
+                  SelectedItem="{Binding SelectedProject}"
+                  MouseDoubleClick="Grid_DoubleClick">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Aktywny" Binding="{Binding Enabled, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                <DataGridTextColumn Header="ServerName" Binding="{Binding ServerName}" Width="220" IsReadOnly="True"/>
+                <DataGridTextColumn Header="DocumentRoot (względny)" Binding="{Binding DocumentRootRelative}" Width="260" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Port" Binding="{Binding Port}" Width="70" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Pełna ścieżka (aktualna litera)" Binding="{Binding AbsolutePath}" Width="*" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- ===== Pasek globalny ===== -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,12,0,0">
+            <Button Content="💾 Zapisz i zastosuj" Click="SaveApply_Click" Style="{StaticResource AccentButton}"/>
+            <Button Content="🧪 Testuj config" Click="TestConfig_Click"/>
+            <Button Content="🔄 Restart Apache" Click="Restart_Click"/>
+            <Button Content="♻ Synchronizuj teraz" Click="SyncNow_Click"/>
+            <Button Content="⚙ Ustawienia" Click="Settings_Click"/>
+        </StackPanel>
+
+        <!-- ===== Status ===== -->
+        <Border Grid.Row="5" Margin="0,10,0,0" Background="{StaticResource SurfaceBrush}" CornerRadius="6"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="12,8">
+            <TextBlock Text="{Binding StatusText}" TextWrapping="Wrap" Foreground="{StaticResource SubTextBrush}"/>
+        </Border>
+    </Grid>
+</Window>

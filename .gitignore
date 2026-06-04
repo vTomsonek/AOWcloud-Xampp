@@ -1,0 +1,43 @@
+# ---- .NET / build ----
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dll
+*.pdb
+*.cache
+
+# ---- Visual Studio / Rider / VS Code ----
+.vs/
+.vscode/
+.idea/
+*.DotSettings.user
+
+# ---- NuGet ----
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.assets.json
+
+# ---- Dane runtime aplikacji (tworzone obok .exe na dysku przenośnym) ----
+# Folder danych programu + kopie zapasowe nie należą do repozytorium.
+AOWcloud-Xampp/config.json
+AOWcloud-Xampp/backups/
+
+# ---- Pliki pomocnicze / artefakty ----
+_icon_preview.png
+*.bak
+Thumbs.db
+desktop.ini
+.DS_Store

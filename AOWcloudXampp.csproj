@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ============================================================
+       AOWcloud Xampp — przenośny menedżer vhostów dla XAMPP
+       Cel buildu: SINGLE-FILE, SELF-CONTAINED (win-x64), aby .exe
+       działał na komputerze BEZ zainstalowanego .NET Runtime,
+       bo aplikacja leży na dysku przenośnym.
+       (RootNamespace pozostaje XamppVHostManager — to wewnętrzna
+        nazwa przestrzeni kodu, nie nazwa programu.)
+       ============================================================ -->
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>AOWcloudXampp</AssemblyName>
+    <RootNamespace>XamppVHostManager</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <Product>AOWcloud Xampp</Product>
+    <AssemblyTitle>AOWcloud Xampp</AssemblyTitle>
+    <Description>Przenośny menedżer wirtualnych hostów dla XAMPP</Description>
+
+    <!-- Parametry publish (single-file self-contained). Można też podać w CLI. -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <!-- WPF + single-file: kompresji NIE łączymy z trimmingiem (WPF nie jest trim-safe). -->
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <!-- Ikona jako zasób WPF, by okna mogły jej użyć w pasku tytułu (Window Icon) -->
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+
+</Project>

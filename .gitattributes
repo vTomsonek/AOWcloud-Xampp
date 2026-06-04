@@ -1,0 +1,16 @@
+# Normalizacja końców linii — auto-detekcja tekstu
+* text=auto
+
+# Pliki kodu/źródła jako tekst
+*.cs      text
+*.xaml    text
+*.csproj  text
+*.manifest text
+*.md      text
+*.json    text
+*.gitignore text
+*.gitattributes text
+
+# Pliki binarne — bez normalizacji
+*.ico     binary
+*.png     binary
