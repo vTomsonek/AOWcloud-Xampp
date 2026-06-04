@@ -1,5 +1,3 @@
-Required Notice: Copyright © 2026 Tomasz (https://jiko.pl)
-
 # PolyForm Noncommercial License 1.0.0
 
 <https://polyformproject.org/licenses/noncommercial/1.0.0>

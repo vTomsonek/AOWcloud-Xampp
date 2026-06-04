@@ -6,7 +6,7 @@
 
 **Przenośny menedżer wirtualnych hostów dla XAMPP na Windows.**
 Trzymaj XAMPP, projekty i ten program na jednym dysku przenośnym i pracuj na wielu
-komputerach — mimo że litera dysku i plik `hosts` są na każdym inne.
+komputerach - mimo że litera dysku i plik `hosts` są na każdym inne.
 
 ![Platforma](https://img.shields.io/badge/platforma-Windows%2010%2F11-0078D6?logo=windows&logoColor=white)
 ![.NET](https://img.shields.io/badge/.NET-8.0%20(WPF)-512BD4?logo=dotnet&logoColor=white)
@@ -21,24 +21,24 @@ komputerach — mimo że litera dysku i plik `hosts` są na każdym inne.
 
 XAMPP na dysku przenośnym + praca na kilku komputerach rodzi dwa uciążliwe problemy:
 
-1. **Litera dysku się zmienia** — na jednym komputerze dysk to `S:`, na innym `E:` lub `F:`.
+1. **Litera dysku się zmienia** - na jednym komputerze dysk to `S:`, na innym `E:` lub `F:`.
    Apache potrzebuje w `DocumentRoot` ścieżek absolutnych, więc „ręczne" `vhosts.conf`
    przestaje pasować po przepięciu dysku.
 2. **Plik `hosts` jest lokalny na każdym komputerze** (`C:\Windows\System32\drivers\etc\hosts`),
-   a nie na dysku — więc wpisy `127.0.0.1 projekt.test` trzeba dodawać osobno na każdej maszynie.
+   a nie na dysku - więc wpisy `127.0.0.1 projekt.test` trzeba dodawać osobno na każdej maszynie.
 
 **AOWcloud Xampp** rozwiązuje oba: jest jednym źródłem prawdy o liście vhostów (na dysku),
 a przy każdym starcie sam dopasowuje lokalne pliki Windows do aktualnej litery i komputera.
 
 ## Funkcje
 
-- 🔌 **Wykrywanie litery dysku w runtime** — żadnego hardkodowanego `S:`. Ścieżki projektów
+- 🔌 **Wykrywanie litery dysku w runtime** - żadnego hardkodowanego `S:`. Ścieżki projektów
   trzymane są **względnie** i rozwijane do pełnych dopiero przy starcie.
 - ♻️ **Regeneracja `httpd-vhosts.conf`** przy każdym uruchomieniu, z aktualną literą dysku
   i ścieżkami w formacie Apache (`E:/projekty/sklep`).
-- 🧩 **Reconcile pliku `hosts`** — dodaje brakujące i usuwa nieistniejące `ServerName`
+- 🧩 **Reconcile pliku `hosts`** - dodaje brakujące i usuwa nieistniejące `ServerName`
   aktywnych projektów, **tylko** w obrębie własnej sekcji markerów.
-- 🔒 **Automatyczny HTTPS (443)** — dla każdego projektu generowany jest też blok SSL
+- 🔒 **Automatyczny HTTPS (443)** - dla każdego projektu generowany jest też blok SSL
   (certyfikat XAMPP), więc `https://projekt.test` trafia tam, gdzie trzeba.
 - 💾 **Kopie `.bak`** każdego edytowanego pliku (z timestampem) przed zapisem.
 - 🖤 **Ciemny motyw**, lista projektów (DataGrid), dodawanie/edycja/usuwanie, otwieranie w przeglądarce.
@@ -46,7 +46,7 @@ a przy każdym starcie sam dopasowuje lokalne pliki Windows do aktualnej litery 
 
 ## Jak działa przenośność
 
-Program, jego dane i XAMPP leżą **razem na dysku przenośnym**. Komputer jest „tymczasowy" —
+Program, jego dane i XAMPP leżą **razem na dysku przenośnym**. Komputer jest „tymczasowy" -
 przy każdym starcie następuje synchronizacja:
 
 ```
@@ -55,7 +55,7 @@ przy każdym starcie następuje synchronizacja:
 3. Rozwiń ścieżki do aktualnej litery.
 4. Zregeneruj sekcję w httpd-vhosts.conf (pełne, aktualne ścieżki).
 5. Reconcile lokalnego hosts (dodaj brakujące / usuń nieistniejące).
-6. Pokaż baner i — jeśli coś się zmieniło — zaproponuj restart Apache.
+6. Pokaż baner i - jeśli coś się zmieniło - zaproponuj restart Apache.
 ```
 
 Dzięki temu: dodajesz vhosta na komputerze **X** → zapis na dysku → wpinasz dysk w komputerze
@@ -68,7 +68,7 @@ Dzięki temu: dodajesz vhosta na komputerze **X** → zapis na dysku → wpinasz
 | `httpd-vhosts.conf` | `<dysk>\xampp\apache\conf\extra\` | na dysku, ścieżka konfigurowalna |
 | `hosts` | `C:\Windows\System32\drivers\etc\` | lokalny na hoście, ścieżkę można nadpisać |
 
-W obu plikach zmieniana jest **wyłącznie** treść między markerami — wpisy użytkownika poza
+W obu plikach zmieniana jest **wyłącznie** treść między markerami - wpisy użytkownika poza
 nimi pozostają nietknięte:
 
 ```
@@ -81,7 +81,7 @@ nimi pozostają nietknięte:
 
 - **Windows 10/11 (x64)**.
 - **XAMPP** na dysku przenośnym w katalogu `xampp` (obok katalogu programu).
-- **Uprawnienia administratora** — edycja `hosts` i restart Apache tego wymagają
+- **Uprawnienia administratora** - edycja `hosts` i restart Apache tego wymagają
   (`app.manifest` wymusza UAC).
 - Do zbudowania: **.NET 8 SDK** (działa też nowszy, np. 9.x). Gotowy `.exe` **nie**
   wymaga zainstalowanego .NET (build self-contained).
@@ -122,7 +122,7 @@ Skopiuj `AOWcloudXampp.exe` na dysk tak, aby obok znajdował się katalog `xampp
 3. Program wykryje literę dysku, wczyta `config.json`, zregeneruje `vhosts.conf`
    i wykona reconcile `hosts`.
 4. W banerze pojawi się np. `Wykryto dysk: E: | Host: DESKTOP-Y | Zsynchronizowano N projektów`.
-5. Gdy coś się zmieniło — program zaproponuje restart Apache.
+5. Gdy coś się zmieniło - program zaproponuje restart Apache.
 
 ## Ustawienia
 
@@ -146,7 +146,7 @@ Themes/      DarkTheme.xaml
 icon.ico     ikona aplikacji
 ```
 
-> Wewnętrzna przestrzeń nazw kodu to `XamppVHostManager` — to identyfikator techniczny,
+> Wewnętrzna przestrzeń nazw kodu to `XamppVHostManager` - to identyfikator techniczny,
 > nie nazwa programu. Nazwa produktu i pliku `.exe` to **AOWcloud Xampp** / `AOWcloudXampp.exe`.
 
 ## Zrzuty ekranu
@@ -156,8 +156,8 @@ Zrzuty ekranu możesz dodać do katalogu `assets/` i podlinkować tutaj, np.
 
 ## Licencja
 
-Projekt objęty licencją **[PolyForm Noncommercial 1.0.0](LICENSE.md)** — dozwolony jest
+Projekt objęty licencją **[PolyForm Noncommercial 1.0.0](LICENSE.md)** - dozwolony jest
 każdy **użytek niekomercyjny** (nauka, hobby, projekty amatorskie, organizacje non-profit,
 instytucje publiczne). Wykorzystanie komercyjne wymaga osobnej zgody autora.
 
-Required Notice: Copyright © 2026 Tomasz (https://jiko.pl)
+Copyright © 2026 Tomasz
