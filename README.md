@@ -160,4 +160,4 @@ Projekt objęty licencją **[PolyForm Noncommercial 1.0.0](LICENSE.md)** - dozwo
 każdy **użytek niekomercyjny** (nauka, hobby, projekty amatorskie, organizacje non-profit,
 instytucje publiczne). Wykorzystanie komercyjne wymaga osobnej zgody autora.
 
-Copyright © 2026 Tomasz
+Copyright © 2026 vTomsonek
