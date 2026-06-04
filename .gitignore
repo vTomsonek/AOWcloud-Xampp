@@ -41,3 +41,6 @@ _icon_preview.png
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Śmieci tworzone przez warstwę FUSE na dysku sieciowym
+.fuse_hidden*
