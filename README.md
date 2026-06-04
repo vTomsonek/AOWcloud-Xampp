@@ -150,9 +150,4 @@ icon.ico     ikona aplikacji
 
 ## Zrzuty ekranu
 
-Zrzuty ekranu możesz dodać do katalogu `assets/` i podlinkować tutaj, np.
-`![Główne okno](assets/screenshot-main.png)`.
-
----
-
-Copyright © 2026 vTomsonek
+![Główne okno AOWcloud Xampp](assets/screenshot-main.png)
