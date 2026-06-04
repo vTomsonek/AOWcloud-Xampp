@@ -11,7 +11,6 @@ komputerach - mimo że litera dysku i plik `hosts` są na każdym inne.
 ![Platforma](https://img.shields.io/badge/platforma-Windows%2010%2F11-0078D6?logo=windows&logoColor=white)
 ![.NET](https://img.shields.io/badge/.NET-8.0%20(WPF)-512BD4?logo=dotnet&logoColor=white)
 ![Build](https://img.shields.io/badge/build-single--file%20self--contained-success)
-![Licencja](https://img.shields.io/badge/licencja-PolyForm%20Noncommercial%201.0.0-blue)
 
 </div>
 
@@ -154,10 +153,6 @@ icon.ico     ikona aplikacji
 Zrzuty ekranu możesz dodać do katalogu `assets/` i podlinkować tutaj, np.
 `![Główne okno](assets/screenshot-main.png)`.
 
-## Licencja
-
-Projekt objęty licencją **[PolyForm Noncommercial 1.0.0](LICENSE.md)** - dozwolony jest
-każdy **użytek niekomercyjny** (nauka, hobby, projekty amatorskie, organizacje non-profit,
-instytucje publiczne). Wykorzystanie komercyjne wymaga osobnej zgody autora.
+---
 
 Copyright © 2026 vTomsonek
